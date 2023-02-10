@@ -2,13 +2,6 @@
 
 {% block content %}
 <main class="auth layout">
-  {% if messages %}
-  <ul class="messages">
-      {% for message in messages %}
-          <li> {{message}}</li>
-      {% endfor %}
-  </ul>
-  {% endif %}
   {% if page == 'login' %}
   <div class="container">
     <div class="layout__box">
@@ -19,16 +12,22 @@
       </div>
       <div class="layout__body">
         <h2 class="auth__tagline">Find your study partner</h2>
-
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <p class="message"> {{message}}</p>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <form class="form" action="" method="POST">
           {% csrf_token %}
           <div class="form__group form__group">
             <label for="room_name">Email</label>
-            <input id="username" name="email" type="email" placeholder="example@gmail.com" />
+            <input id="email" required name="email" type="email" placeholder="example@gmail.com" />
           </div>
           <div class=" form__group">
             <label for="password">Password</label>
-            <input id="password" name="password" type="password"
+            <input id="password" name="password" required type="password"
               placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
           </div>
 
@@ -64,7 +63,13 @@
       </div>
       <div class="layout__body">
         <!-- <h2 class="auth__tagline">Find your study partner</h2> -->
-
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <p class="message"> {{message}}</p>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <form class="form" action="" method="POST">
           {% csrf_token %}
 
